@@ -356,7 +356,9 @@ private fun PillTab(
             .padding(horizontal = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(item.icon, item.label, tint = tint, modifier = Modifier.size(24.dp).graphicsLayer { scaleX = pop.value; scaleY = pop.value })
+        val glyph = Modifier.size(24.dp).graphicsLayer { scaleX = pop.value; scaleY = pop.value }
+        if (item.iconContent != null) Box(glyph) { item.iconContent.invoke(tint) }
+        else if (item.icon != null) Icon(item.icon, item.label, tint = tint, modifier = glyph)
         AnimatedVisibility(
             visible = selected,
             enter = expandHorizontally(spring(0.75f, 500f)) + fadeIn(),

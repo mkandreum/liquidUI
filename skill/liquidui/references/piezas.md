@@ -266,7 +266,52 @@ const s = U.sheet({ title: 'Filtros', content: nodo, detents: [0.5, 0.9] }); s.o
 
 ---
 
+## 14 · Barra con mini reproductor
+
+```kotlin
+LiquidMediaBar(
+    backdrop = backdrop, items = items, selectedIndex = tab, onSelect = { tab = it },
+    foldState = rememberLiquidBarFoldState(mode = LiquidFoldMode.ByDirection),
+    action = LiquidBarAction("Buscar", icon = Icons.Rounded.Search, onClick = openSearch),
+    detachAction = true,                       // Buscar siempre como círculo aparte
+    accessory = { inline, expanded -> MiMini(inline, expanded) },   // opacidades de cada versión
+    accessoryHeight = 52.dp, foldedHeight = 48.dp,
+)
+```
+La barra normal (`LiquidBar`) no cambia; esta es la variante con mini integrado (Convx).
+
+## 15 · Mini reproductor
+
+```kotlin
+LiquidMiniPlayer(
+    backdrop, title, subtitle, isPlaying, onPlayPause = ..., onOpen = ...,
+    artwork = { m -> AsyncImage(url, null, m, contentScale = ContentScale.Crop) },
+    onNext = ..., onSkip = { next -> ... }, onLongPress = ...,
+    inline = inline, expanded = expanded,           // de LiquidMediaBar
+    playGlyph = { playing, size -> MiIcono(playing, size) },   // opcional
+)
+```
+Solo la versión visible recibe toques y va encima (si no, la oculta se traga el play).
+
+## 16 · Barra curva
+
+```kotlin
+LiquidArcSlider(value, onValueChange, Modifier.weight(1f).fillMaxHeight(),
+    mirrored = false,                 // «╮» a la izquierda; true «╭» a la derecha
+    segments = 10, topLabel = "3:20", bottomLabel = "0:59",
+    colors = LiquidArcSliderDefaults.colors(fill = colorDeLaCaratula),
+    inner = { LiquidSkipButton(next = false, onClick = prev, backdrop = backdrop) })
+```
+Un toque suelto no cambia el valor; el valor solo cambia arrastrando.
+
+## 17 · Glifos de cristal
+
+`LiquidPlayButton(isPlaying, onClick, backdrop, size = 96.dp)` y `LiquidSkipButton(next, onClick, backdrop)`: cristal con la forma del glifo, sin círculo. El `backdrop` debe ser la capa `glassSource` hermana (en el reproductor, el fondo desenfocado).
+
 ## Errores conocidos
+
+- **Cristal en ventanas emergentes** (`Popup`, `DropdownMenu`): `glassSurface` no puede leer una capa de otra ventana; usa el material propio de la app ahí.
+
 
 | Síntoma | Causa | Solución |
 |---|---|---|

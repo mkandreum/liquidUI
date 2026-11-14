@@ -1,11 +1,11 @@
 ---
 name: liquidui
-description: Guía de diseño y montaje de LiquidUI (repo mkandreum/liquidUI): barra de cristal líquido y 13 piezas de cristal con lupa y muelles (isla, abanico de burbujas, lupa de gráficas, interruptor, deslizador, selector segmentado, menú de pulsación larga, hoja inferior, buscar que se transforma, chips sobre fotos, insignia, botón de cristal y tirar para recargar) en Jetpack Compose, web vanilla y React. Úsala siempre que se pida «aplica liquidbar / liquidUI», «pon la barra de cristal», «pon la isla / el abanico / la lupa…», cristal líquido o efecto Liquid Glass en una app Android o web, o se pegue la lista de propuestas de piezas de cristal, aunque no se nombre la skill.
+description: Guía de diseño y montaje de LiquidUI (repo mkandreum/liquidUI): barra de cristal líquido y 17 piezas de cristal con lupa y muelles (isla, abanico de burbujas, lupa de gráficas, interruptor, deslizador, selector segmentado, menú de pulsación larga, hoja inferior, buscar que se transforma, chips sobre fotos, insignia, botón de cristal y tirar para recargar) en Jetpack Compose, web vanilla y React. Úsala siempre que se pida «aplica liquidbar / liquidUI», «pon la barra de cristal», «pon la isla / el abanico / la lupa…», cristal líquido o efecto Liquid Glass en una app Android o web, o se pegue la lista de propuestas de piezas de cristal, aunque no se nombre la skill.
 ---
 
 # LiquidUI: diseño y montaje de piezas de cristal
 
-El repo **mkandreum/liquidUI** (local: `~/Descargas/liquidUI`) contiene la barra de cristal (`LiquidBar` / `LiquidPillBar`) y 13 piezas que comparten el mismo cristal, los mismos muelles y la misma lupa. Cada pieza existe en tres sabores con los mismos valores:
+El repo **mkandreum/liquidUI** (local: `~/Descargas/liquidUI`) contiene la barra de cristal (`LiquidBar` / `LiquidPillBar`) y 17 piezas que comparten el mismo cristal, los mismos muelles y la misma lupa. Cada pieza existe en tres sabores con los mismos valores:
 
 | Sabor | Dónde está | Cómo se lleva a una app |
 |---|---|---|
@@ -57,6 +57,9 @@ Documentación detallada en el repo: `docs/UI.md` (piezas), `docs/PORTAR.md` (ba
 | contadores (cesta, notificaciones) | **Insignia** | el número no cambia nunca |
 | botones flotantes o de icono sobre contenido | **Botón de cristal** | botones dentro de formularios |
 | listas sincronizables | **Tirar para recargar** | la lista no tiene nada que recargar |
+| reproductor de música con mini en la barra | **Barra con mini** (`LiquidMediaBar`) + **Mini reproductor** | no hay reproducción |
+| progreso o volumen alrededor de un botón | **Barra curva** (`LiquidArcSlider`) | el control va en una fila recta (usa el Deslizador) |
+| play/pausa, anterior y siguiente sobre fondo con imagen | **Glifos de cristal** | el fondo es plano (no se ve el cristal) |
 
 ## Valores comunes (no cambiar sin motivo)
 

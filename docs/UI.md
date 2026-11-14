@@ -27,6 +27,10 @@ Demos: Android → módulo `sample/` (no se sube; `./gradlew :sample:assembleDeb
 | 11 | Menú de pulsación larga | `LiquidContextMenuArea` + `LiquidMenuHost` | `LiquidUI.contextMenu(el)` | `useContextMenu` / `menuRef` | la tarjeta se eleva ×1,03 sobre el fondo desenfocado y salen píldoras de cristal (35 ms) |
 | 12 | Tirar para recargar | `LiquidPullRefresh` | `LiquidUI.pullRefresh()` | `usePullRefresh()` | gota de cristal que se estira (tanh) y cae con rebote spring(0.45, 300) |
 | 13 | Hoja inferior | `LiquidSheet` / `LiquidPortalSheet` | `LiquidUI.sheet()` | `<LiquidSheet>` | hoja propia con canto refractado, asa elástica y alturas con spring(0.75, 300) |
+| 14 | Barra con mini reproductor | `LiquidMediaBar` | — | — | barra de Convx: mini encima de la cápsula; al plegar, fundido (salida 90 ms, entrada 220 ms tras 90 ms) a una fila círculo · mini · acción; el mini viaja con muelle sin rebote (StiffnessMediumLow) y un gooey de 300 ms funde las formas |
+| 15 | Mini reproductor | `LiquidMiniPlayer` | — | — | cápsula de cristal con carátula 36 dp, título/artista, play/pausa y siguiente; tira fina con play/pausa al plegar; deslizar cambia de canción; crece ×1,04 al pulsar; glifos propios opcionales |
+| 16 | Barra curva | `LiquidArcSlider` | — | — | cuarto de círculo de cristal («╮» / «╭») que se rellena desde abajo; bolita que es lente ×1,6; vibra al mantener 350 ms y en cada tramo al arrastrar, más fuerte en los extremos; hueco interior (`inner`) para un botón |
+| 17 | Glifos de cristal | `LiquidPlayButton` · `LiquidSkipButton` | — | — | play/pausa y anterior/siguiente hechos de cristal con la forma del glifo (sin círculo): aumento, desenfoque y filo de luz; el play se transforma con spring(0.6, 500) |
 
 Las lentes que amplían (interruptor, deslizador, abanico, gráficas, recargar) usan el aumento real: en Android, `GlassLook.zoom` del shader; en web, `MagnifyFilter` (mapa SVG que amplía y refracta a la vez).
 
@@ -83,6 +87,9 @@ React: copia `web/react/LiquidUI.tsx` a la web (p. ej. `src/components/LiquidUI.
 - `window.LiquidBar` lo declara cada web a su manera: el adaptador solo declara `window.LiquidUI`.
 
 ## 4. Dónde está aplicada
+
+- **XyonMusic Pro**: `LiquidMediaBar` con `LiquidMiniPlayer` (barra de pestañas y Buscar aparte), reproductor a pantalla completa con `LiquidArcSlider` (posición y volumen), `LiquidPlayButton` y `LiquidSkipButton`, menú principal con `liquidGlass`, interruptores y deslizadores de toda la app con `LiquidToggle` y `LiquidSlider`.
+
 
 | App | Android | Web |
 |---|---|---|
